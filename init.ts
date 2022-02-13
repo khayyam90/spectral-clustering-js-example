@@ -15,7 +15,7 @@ let colors = ["red", "blue", "green", "orange", "yellow", "pink", "brown", "navy
 window.onload = function(){
     canvas = <HTMLCanvasElement>(document.getElementById("zone"));
     graph = new Graph();
-    graph.generateRandom(800, 800, 100,6);
+    graph.generateRandom([800, 800], 100,6);
 
     (<HTMLSpanElement>document.getElementById("sizeLabel")).innerText = "100";
 
@@ -34,7 +34,7 @@ function onSliderChange(){
     let size = Number.parseInt(slider.value);
 
     graph = new Graph();
-    graph.generateRandom(800, 800, size,6);
+    graph.generateRandom([800, 800], size,6);
 
     (<HTMLSpanElement>document.getElementById("sizeLabel")).innerText = ""+size;
 

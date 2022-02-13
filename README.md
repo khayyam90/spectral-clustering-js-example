@@ -2,7 +2,7 @@
 
 ```
 npm install
-webpack-cli
+npx webpack-cli
 ```
 
 Open index.html in your browser
