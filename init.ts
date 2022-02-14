@@ -6,7 +6,7 @@ let graph: Graph = null;
 let graphRenderer: GraphRenderer = null;
 let canvas: HTMLCanvasElement = null;
 
-let colors = ["red", "blue", "green", "orange", "yellow", "pink", "brown", "navy"];
+const colors = ["red", "blue", "green", "orange", "yellow", "pink", "brown", "navy"];
 
 
 /**
@@ -19,10 +19,10 @@ window.onload = function(){
 
     (<HTMLSpanElement>document.getElementById("sizeLabel")).innerText = "100";
 
-    let slider = <HTMLInputElement>(document.getElementById("graphSize"));
+    const slider = <HTMLInputElement>(document.getElementById("graphSize"));
     slider.addEventListener("change", onSliderChange);
 
-    let runBtn = <HTMLButtonElement>(document.getElementById("runClustering"));
+    const runBtn = <HTMLButtonElement>(document.getElementById("runClustering"));
     runBtn.addEventListener("click", onRun);
 
     graphRenderer = new GraphRenderer(graph, canvas);
@@ -30,8 +30,8 @@ window.onload = function(){
 };
 
 function onSliderChange(){
-    let slider = <HTMLInputElement>(document.getElementById("graphSize"));
-    let size = Number.parseInt(slider.value);
+    const slider = <HTMLInputElement>(document.getElementById("graphSize"));
+    const size = Number.parseInt(slider.value);
 
     graph = new Graph();
     graph.generateRandom([800, 800], size,6);
@@ -43,8 +43,7 @@ function onSliderChange(){
 }
 
 function onRun(){
-
-    let s = new SpectralClustering(graph);
+    const s = new SpectralClustering(graph);
     s.compute();
 
     graphRenderer.draw(colors);

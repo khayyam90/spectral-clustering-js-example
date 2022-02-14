@@ -1,9 +1,9 @@
 import { Node, Graph } from "spectral-clustering-js";
 
 export class GraphRenderer {
-    private ctx: any;
+    private ctx: CanvasRenderingContext2D;
     private graph: Graph;
-    private canvas: any;
+    private canvas: HTMLCanvasElement;
     
 	constructor(graph : Graph, canvas: HTMLCanvasElement){
         this.ctx = canvas.getContext("2d");
@@ -15,7 +15,7 @@ export class GraphRenderer {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
         this.graph.getNodes().forEach( node => {
-            node.getConnectedNodes().forEach(function(value: Node, key: string){
+            node.getConnectedNodes().forEach(function(value: Node){
                 this.drawLink(node, value);
             }.bind(this));
         });
@@ -26,10 +26,10 @@ export class GraphRenderer {
     }    
 
     public drawNode(node: Node, colors: Array<string>){
-        let circle = new Path2D();
+        const circle = new Path2D();
         circle.arc(node.getPoint().getX(), node.getPoint().getY(), 5, 0, 2 * Math.PI, false);
         
-        let color = colors[node.getCluster()];
+        const color = colors[node.getCluster()];
 
         this.ctx.fillStyle = color;
         this.ctx.fill(circle);
